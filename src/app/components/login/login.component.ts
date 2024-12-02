@@ -21,6 +21,7 @@ export class LoginComponent {
       password:new FormControl('',[Validators.required])
 
     }
+    
   );
 
 onSubmit()
