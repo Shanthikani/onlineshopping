@@ -20,6 +20,7 @@ export class LoginComponent {
       email:new FormControl('',[Validators.required,Validators.email]),
       password:new FormControl('',[Validators.required])
 
+
     }
   );
 
@@ -28,7 +29,7 @@ onSubmit()
   console.log(this.loginForm.value.email);
   if(this.loginForm.value.email==="abc@gmail.com" || this.loginForm.value.email==="abc" && this.loginForm.value.password==="abc")
   {
-    
+    console.log("Hi JAckie");
   this.loginInvalid=false;
   }
   else
