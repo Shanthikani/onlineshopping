@@ -1,0 +1,111 @@
+.example-card {
+    max-width: 325px;
+    
+   
+  }
+
+  mat-grid-tile-header {
+    background-color: #f5f5f5;
+    padding: 1px;
+    font:bold
+  }
+
+  mat-card{ 
+    background-color:rgb(240, 235, 235);
+    
+  }
+
+
+  .grid-list{
+    width: 100%;
+    height:auto;
+    display: grid;
+    } 
+    .background
+    {
+    background:rgb(240, 235, 235);
+  }
+  .header
+  {
+    font-size:xx-large;
+    color:black;
+    font-style: normal;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: left;
+
+  }
+  .description
+  {
+    font-size:small;
+    color:black;
+  }
+.img{
+  border-width: 1pt;
+  border-color: black;
+}
+.outline{
+  border-style: solid;
+  border-width: medium;
+}
+
+  
+ .content{
+  height:calc((100vh - 98px));
+  margin:16px;
+  margin-left:32px;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  border-radius: 10px;
+ }
+ 
+ mat-paginator{
+  background:darkgoldenrod
+ }
+
+
+/*
+ 
+    @media (min-width:992px) {
+      .grid-list{
+        display: flex;
+        background-color: blue;
+        padding:10px;
+        grid-row-gap:2em;
+        grid-template-columns: repeat(2,1fr); 
+      }
+      .image
+      {
+        height: "197px";
+        width: "197px";
+      }
+    }
+
+  // For Tablet 
+    @media (min-width:768px) and (max-width:991px) {
+      .grid-list{
+        display: flex;
+        background-color: red;
+        padding:10px;
+        grid-row-gap:2em;
+        grid-template-columns: repeat(2,1fr);
+        flex: 0 1 calc(50% - 32px);
+
+      }
+      
+    }
+  // For Mobile 
+  @media (max-width:767px) {
+    .grid-list{
+      display: flex;
+      background-color: orange;
+      padding:10px;
+       grid-row-gap:2em;
+        grid-template-columns: 1fr;
+    }
+    .image
+    {
+      height: 120px;
+      width: 120px;
+    }
+  }  */

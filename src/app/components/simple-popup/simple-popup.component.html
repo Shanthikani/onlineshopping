@@ -1,0 +1,24 @@
+<div class="popup-overlay" (click)="closePopup()">
+    <div class="popup-content" (click)="$event.stopPropagation()">
+        <div class="spacer"></div>
+        <img src="close.png" mat-icon height="20px" (click)="closePopup()" class="close"/>
+        <mat-card class ="example-card  mat-elevation-z0  pop" >
+            <div class="align">
+                <img src="leftarrow.png" mat-icon height="20px"  class="arrow"/>
+            </div>
+            <div>
+                <img mat-card-image [src]="data.thumbnail" [alt]="data.title" height="250px" weight="200px">
+                <!-- <mat-card-header class="header"> -->
+                <!-- <div mat-card-avatar ></div> -->
+                 <mat-card-title>{{data.title}}</mat-card-title>
+                <!-- </mat-card-header> -->
+                <mat-card-content class="content">
+                    <p>{{data.description}}</p>
+                </mat-card-content>
+            </div>
+            <div class="align">
+                <img src="rightarrow.png" mat-icon height="20px"  class="arrow"/>
+            </div>
+        </mat-card>
+    </div>
+</div>

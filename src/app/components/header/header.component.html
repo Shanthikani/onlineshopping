@@ -1,0 +1,43 @@
+<!-- <div>
+    <nav class="navbar">
+      <div class="navbar-logo">
+        <img src="https://cdn.dribbble.com/users/4843167/screenshots/14540242/dribbble-min_4x.jpg" class="logo"alt="My App Logo" />
+      </div>
+      <div class="col-md-9 col-sm-9 col-9 text-end">
+        <ul class="navbar-links">
+            <li ><a routerLink="product" routerLinkActive="active">Product</a></li>
+        </ul>
+     </div>
+     </nav>
+  </div>
+  <div>
+    <router-outlet></router-outlet>
+  </div> -->
+  <div>
+  <mat-toolbar class="background">
+
+    <!-- <button mat-icon-button  (click)="toogleSideNav()"> -->
+      <button mat-button (click)="menuClose()" *ngIf="sideNavOpen">   <mat-icon >menu</mat-icon></button>
+    <button mat-button (click)="menuOpen()" *ngIf="sideNavClose">  <mat-icon >close</mat-icon></button>
+    
+  <!-- </button> -->
+ 
+<!-- <mat-menu #menu="matMenu">
+  <button mat-menu-item>Item 1</button>
+  <button mat-menu-item>Item 2</button>
+  <button mat-menu-item>Item 3</button>
+</mat-menu> -->
+
+    <img src="shopping.jpg" height="10px" class="logo" alt="My App Logo" />
+    <span class="font">Online Shop</span>
+    <div class="spacer"></div>
+    
+    
+    <button class="productFont" mat-flat-button routerLink="/product" routerLinkActive="true">Product</button>
+    <img src="home1.png" mat-icon height="5px" class="home img" routerLink="/home" routerLinkActive="true"/>
+    <img src="cart.png" mat-icon height="30px" class="home1 img"/>
+    <button class="productFont" mat-flat-button routerLink="/login" routerLinkActive="true">Login</button>
+    <button class="productFont" mat-flat-button routerLink="/register" routerLinkActive="true">Register</button>
+
+  </mat-toolbar>
+</div>

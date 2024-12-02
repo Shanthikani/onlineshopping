@@ -1,0 +1,16 @@
+<div class="background">
+<div class="spacer">
+    <h1 class="background" mat-dialog-title>{{data.title}}<button class="close"(click)="closeDialog()"><mat-icon >close</mat-icon></button></h1>
+    
+
+</div>
+<div>
+    <img mat-card-img [src]="data.thumbnail" [alt]="data.title" height="250px" weight="200px">
+</div>
+<div mat-dialog-content>
+    <p>{{data.description}}</p>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="closeDialog()">Close</button>
+</div>
+</div>

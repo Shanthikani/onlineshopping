@@ -1,0 +1,26 @@
+<mat-card>
+    <mat-card-content>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <h2>Log In</h2>
+            <mat-error *ngIf="loginInvalid">
+                The username and password were not recognized
+            </mat-error>
+
+            <mat-form-field appearance="outline" >
+                <mat-label>Username/email</mat-label>
+                <input matInput placeholder="Email" formControlName="email" type="email"required>
+                <mat-error *ngIf="loginForm.get('email').invalid && loginForm.get('email').touched">
+                     Enter the valid username/email
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Password</mat-label>
+                <input matInput placeholder="Password" formControlName="password" type="password" required>
+                <mat-error *ngIf="">
+                    Enter the valid password
+                </mat-error>
+            </mat-form-field>
+            <button mat-stroked-button>Login</button>
+        </form>
+    </mat-card-content>
+</mat-card>
