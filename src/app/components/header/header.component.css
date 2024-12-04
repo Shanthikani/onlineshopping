@@ -1,6 +1,22 @@
 .logo{
-    height:50px;
-    width:50px;
+    height:30px;
+    width:30px;
+    margin-left:0px;
+    margin-right: 30px;
+  }
+  .mat-icon-arrow
+  {
+    color:white;
+  }
+  .button-menu-hover:hover
+  {
+    color:darkgoldenrod;
+
+  }
+  .menu {
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #f9f9f9;
   }
   .font
   {
@@ -11,17 +27,17 @@
   }
   button.productFont
   {
-    color:black;
-    background-color: white;
-    padding: 5px;
-  }
- 
+    margin-right: 5px;
+    color:white;
+    background-color: black;
+    padding: 1px;
+  } 
   button.productFont:hover
   {
-    background:darkgoldenrod;
-    color:white;
-    
+    /* background:darkgoldenrod; */
+    color:darkgoldenrod;
   }
+ 
   .spacer
   {
     flex: 1 1 auto;
@@ -32,12 +48,12 @@
   {
     background-color:black;
   }
-  .background > button :hover
+   /* .background > button :hover
   {
     background:white;
-    padding: 5px;
+    padding: 5px; 
     border-radius: 50%;
-  }
+  }  */
   
   .position
   {
@@ -53,9 +69,9 @@
     width:20px;
     padding: 5px;;
     display:block;
-    
-    
+    margin-left: 5px;    
   }
+  
   img:hover
   {
     background-color:lightgoldenrodyellow;
