@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Observable,map } from 'rxjs';
-import { Products} from "../../models/product.model";
+import { Subject} from 'rxjs';
+import { Categories, Products} from "../../models/product.model";
 import {HttpClient} from '@angular/common/http';
+import { Constant } from './constant/constant';
 
 
 @Injectable({
@@ -9,6 +10,7 @@ import {HttpClient} from '@angular/common/http';
 })
 
 export class ProductService{
+   
     constructor(private http:HttpClient) {
         console.log("Inside the product service");
     }
@@ -25,14 +27,32 @@ export class ProductService{
     //     }
     //     )
 
+  
     getProducts(url:string)
     {
-        debugger;
         return this.http.get<Products>(url);
     }
-       
-       
 
+    getCategories()
+    {
+        return this.http.get(Constant.API_END_POINT + Constant.METHODS.GET_ALL_CATEGORY);
+    } 
+    saveProduct(obj:any)
+    {
+        return this.http.post(Constant.API_END_POINT + Constant.METHODS.CREATE_PRODUCT,obj)
+    }
+    updateProduct(obj:any)
+    {
+        return this.http.post(Constant.API_END_POINT+ Constant.METHODS.UPDATE_PRODUCT,obj);
+    }
+    deleteProduct(id:any)
+    {
+        return this.http.delete(Constant.API_END_POINT+Constant.METHODS.DELETE_PRODUCT + id);
+    }
+    getCategoryProducts(category:any)
+    {
+        return this.http.get(category.url);
+    }
     }
     
 

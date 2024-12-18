@@ -7,8 +7,10 @@ import { ProductService } from './services/product.service';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { MaincomponentComponent } from './components/maincomponent/maincomponent.component';
 import { SidenavService } from './services/Sidenav.service';
+import { AuthService } from './services/auth.service';
+import { CategoryService } from './services/category.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideAnimationsAsync(),
-  ProductService,SidenavService,provideHttpClient(withInterceptorsFromDi())]
+  ProductService,SidenavService,AuthService,CategoryService,CategoryService,provideHttpClient(withInterceptorsFromDi())]
 };

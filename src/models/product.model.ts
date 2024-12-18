@@ -3,7 +3,7 @@ import { Timestamp } from "rxjs";
 
 export interface Product
 {
-    id:number;
+     id:number;
     title:string;
     description:string;
     category:string;
@@ -48,4 +48,13 @@ export interface Review{
 export interface Products
 {
     products:Product[];
+}
+export interface Category{
+    slug:string;
+    name:string;
+    url:string;
+}
+export interface Categories
+{
+    categories:Category[];
 }

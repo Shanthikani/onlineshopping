@@ -1,5 +1,6 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { Component,ViewChild } from '@angular/core';
+import { outputAst } from '@angular/compiler';
+import { Component,EventEmitter,Output,ViewChild } from '@angular/core';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
@@ -19,6 +20,8 @@ import { SidenavService } from '../../services/Sidenav.service';
 export class SideNavComponent {
   @ViewChild(MatSidenav) sidenav!:MatSidenav;
   private observer:BreakpointObserver;
+  openedSmallScreen:boolean=false;
+  
   constructor(private sidenavService:SidenavService,observer:BreakpointObserver)
 {
   this.observer=observer;
@@ -32,16 +35,19 @@ ngAfterViewInit()
       if(res.matches)
       {
         this.sidenav.mode="over";
-        this.sidenav.close();
-        
+        this.sidenav.close();       
       }
       else
       {
-        this.sidenav.mode="side";
-        
-        
+        debugger;
+        this.sidenav.mode="side"; 
+       
+           
+
       }
     });
+
+   
     
 }
 }

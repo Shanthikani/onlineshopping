@@ -20,3 +20,7 @@ mat-form-field
 input{
     align-content: center;
 }
+
+button{
+    margin-left: 15px;
+}

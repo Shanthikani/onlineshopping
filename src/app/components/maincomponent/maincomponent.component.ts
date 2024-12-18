@@ -10,10 +10,7 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { SimplePopupComponent } from '../simple-popup/simple-popup.component';
 import {MatDialog} from '@angular/material/dialog';
 import { ModelComponent } from '../model/model.component';
-import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
-import { MatIconModule } from '@angular/material/icon';
-import { BreakpointObserver } from '@angular/cdk/layout';
-import { SidenavService } from '../../services/Sidenav.service';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-maincomponent',
@@ -25,7 +22,7 @@ import { SidenavService } from '../../services/Sidenav.service';
             MatGridListModule,
             MatPaginator,
             SimplePopupComponent,
-            NgIf],
+            NgIf,MatButtonModule],
   templateUrl: './maincomponent.component.html',
   styleUrl: './maincomponent.component.css',
   
@@ -37,7 +34,7 @@ export class MaincomponentComponent implements OnInit{
   productService:ProductService;
   selectedProduct!:Product;
   cols!:number;
-  tileSize=315;
+  tileSize=400;
   startIndex:number=0;
   endIndex:number=9;
   isPopUpVisible:boolean=false;
@@ -63,9 +60,7 @@ export class MaincomponentComponent implements OnInit{
     {
       next:(value)=>{
         this.productList=value.products;
-        this.pageSlice=this.productList.slice(0,10);
-        console.log(this.productList);
-        
+        this.pageSlice=this.productList.slice(0,10);        
     },
       error:(error) =>{
 
@@ -78,7 +73,6 @@ export class MaincomponentComponent implements OnInit{
  showPopUp(product: Product,event:Event)
  {
     /* Setting the selected product */
-    console.log(product.title);
     this.selectedProduct=product;
     this.isPopUpVisible=true;
     const dialogRef=this.dialog.open(ModelComponent,
