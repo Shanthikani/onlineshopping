@@ -28,6 +28,7 @@
                 </mat-error>
             </mat-form-field>
             <button type="submit" mat-stroked-button [disabled]="loginForm.invalid">Login</button>
+            <button type="submit" mat-stroked-button [disabled]="loginForm.invalid">Register</button>
             <div class="alert alert-danger" *ngIf="submitted && isLoginFailed">
                 Login-Failed
             </div>

@@ -9,6 +9,7 @@ import { AuthService } from '../../services/auth.service';
 import { LoginInterface } from '../../interfaces/login.interface';
 import { Router } from '@angular/router';
 import { UserInterface } from '../../interfaces/user.interface';
+import { SidenavService } from '../../services/Sidenav.service';
 
 @Component({
   selector: 'app-login',
@@ -27,9 +28,9 @@ export class LoginComponent implements OnInit{
   errorMessage='';
 
 
-  constructor(private auth:AuthService,private router:Router)
+  constructor(private auth:AuthService,private router:Router,private sidenavService:SidenavService)
   {
-
+    sidenavService.close();
   }
   
   ngOnInit(): void 
@@ -67,7 +68,8 @@ export class LoginComponent implements OnInit{
         next:(user:UserInterface)=>
         {
             this.isLoggedIn=true;
-            this.router.navigate(['/home']);
+             this.router.navigate(['/home']);
+             console.log(sessionStorage.getItem("username"));
         },
         error:(error) =>
         {

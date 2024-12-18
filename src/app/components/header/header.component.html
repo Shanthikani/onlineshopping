@@ -17,8 +17,8 @@
   <mat-toolbar class="background">
 
     <!-- <button mat-icon-button  (click)="toogleSideNav()"> -->
-      <button mat-button (click)="menuClose()" *ngIf="sideNavOpen">   <mat-icon >menu</mat-icon></button>
-    <button mat-button (click)="menuOpen()" *ngIf="sideNavClose">  <mat-icon >close</mat-icon></button>
+      <button mat-button (click)="toggleSidenav()" *ngIf="!isSidenavVisible">   <mat-icon >menu</mat-icon></button>
+    <button mat-button (click)="toggleSidenav()" *ngIf="isSidenavVisible">  <mat-icon >close</mat-icon></button>
     
   <!-- </button> -->
  
@@ -27,7 +27,6 @@
   <button mat-menu-item>Item 2</button>
   <button mat-menu-item>Item 3</button>
 </mat-menu> -->
-
     <img src="shopping.jpg" height="10px" class="logo" alt="My App Logo" />
     <!-- <span class="font">Online Shop</span> -->
 
@@ -38,21 +37,27 @@
       </button>
     </div> -->
 
-    <div class="button-menu-hover">
-      <button class="productFont " mat-flat-button [matMenuTriggerFor]="categoryMenu"routerLink="/product" routerLinkActive="true" (click)="toggleMenu()">
-        Category 
-        <mat-icon class="mat-icon-arrow">keyboard_arrow_down</mat-icon>
+    <div >
+      <button class="productFont " mat-flat-button routerLink="/product" routerLinkActive="true" (click)="toggleMenu()">
+        Products 
       </button>
-    <mat-menu #categoryMenu="matMenu">
-      <button mat-menu-item *ngFor="let category of categories">{{category}}</button>
-    </mat-menu>
-    </div>
-
-    <div class="spacer"></div>    
+        <button class="productFont " mat-flat-button [matMenuTriggerFor]="categoryMenu" routerLinkActive="true" (click)="toggleMenu()">
+        Category 
+        <mat-menu #categoryMenu="matMenu">
+            <button mat-menu-item *ngFor="let category of categories" (click)="setCategoryProduct(category)" routerLink="/categoryProduct">{{category.slug}}</button>
+          </mat-menu>
+      </button>
+      
+    </div> 
+    <div class="spacer"></div>   
+    <span type="text" class="productFont" *ngIf="isLoggedIn" routerLinkActive="true">{{username}}</span>
+    <img src="home1.png" mat-icon height="5px" class="img" routerLink="/home" routerLinkActive="true"/>
+    <img src="cart.png" mat-icon height="30px" class="img"/> 
     <button class="productFont" *ngIf="!isLoggedIn" mat-flat-button routerLink="/login" routerLinkActive="true">Login</button>
     <button class="productFont" *ngIf="isLoggedIn" mat-flat-button routerLink="/home" routerLinkActive="true" (click)="logout()">Logout</button>
-    <button class="productFont" mat-flat-button routerLink="/register" routerLinkActive="true">Register</button>
-    <img src="home1.png" mat-icon height="5px" class="home img" routerLink="/home" routerLinkActive="true"/>
-    <img src="cart.png" mat-icon height="30px" class="home1 img"/>
+    <button class="productFont" *ngIf="!isLoggedIn" mat-flat-button routerLink="/register" routerLinkActive="true">Register</button>
+   
+    
+    
   </mat-toolbar>
 </div>

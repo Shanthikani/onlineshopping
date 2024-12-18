@@ -62,8 +62,17 @@
  mat-paginator{
   background:darkgoldenrod
  }
-
-
+ .position
+ {
+  text-align: center;
+ }
+.buttonFont
+{
+  color:black
+}
+ .buttonFont:hover{
+  background-color: aqua;
+ }
 /*
  
     @media (min-width:992px) {

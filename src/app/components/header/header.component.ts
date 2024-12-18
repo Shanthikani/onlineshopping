@@ -10,23 +10,31 @@ import { SidenavService } from '../../services/Sidenav.service';
 import { NgFor, NgIf } from '@angular/common';
 import { MatSelectModule } from '@angular/material/select';
 import { AuthService } from '../../services/auth.service';
+import { ProductService } from '../../services/product.service';
+import { Category } from '../../../models/product.model';
+import { CategoryService } from '../../services/category.service';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [NgIf,NgFor,RouterOutlet,RouterLink,RouterLinkActive,MatIconModule,MatToolbarModule,MatButtonModule,ProductcomponentComponent,MatIconAnchor,MatMenuModule,MatSelectModule],
+  imports: [NgIf,NgFor,MatSidenavModule,RouterOutlet,RouterLink,RouterLinkActive,MatIconModule,MatToolbarModule,MatButtonModule,ProductcomponentComponent,MatIconAnchor,MatMenuModule,MatSelectModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
   public sideNavClose:boolean=false;
   public isMenuVisible:boolean=false;
-  categories=["Beauty", "Fragrance", "Furniture", "Groceries"];
+  public isSidenavVisible:boolean=false;
+  categories:any=[];
   sideNavOpen:boolean=true;
   public isLoggedIn!:boolean;
+  public category!:Category;
+  public username:any;
+  
 
 
-  constructor(private router:Router,private cdef:ChangeDetectorRef, public sidenavService:SidenavService,private auth:AuthService){
+
+  constructor(private router:Router,private cdef:ChangeDetectorRef, public sidenavService:SidenavService,private auth:AuthService,private productService:ProductService,private categoryService:CategoryService){
     
   }
 
@@ -35,55 +43,72 @@ export class HeaderComponent {
       this.router.navigate(['/product']).then(()=> this.cdef.detectChanges());
       
   }
+ 
   ngOnInit()
   {
+      this.loginUpdate();
+      this.getAllCategories();   
+  }
 
+  loginUpdate()
+  {
     this.auth.onLoginUpdate.subscribe(()=>
     {
       this.isLoggedIn=this.auth.isLoggedIn();
-    })
+      this.username="Welcome "+ sessionStorage.getItem("username")+"!";
+
+    });
   }
   toogleSideNav()
   {
     this.sidenavService.toggle();
-    // this.sideNavOpen=true;
-    // console.log(this.sideNavOpen);
+    if(this.sidenavService.open())
+    {
+      this.sidenavService.open();
+    }
+    else
+    {
+      this.sidenavService.close();
+    }
+    
+  } 
+
+  toggleMenu()
+  {
+    this.isMenuVisible=!this.isMenuVisible;
+  }
+  toggleSidenav()
+  {
+    	this.isSidenavVisible=!this.isSidenavVisible;
+
+      if(this.isSidenavVisible)
+      {
+        this.sidenavService.open()
+      }
+      else{
+        this.sidenavService.close();
+      }
+   
+  }
+
+  logout()
+  {
+    this.auth.logout();
+    this.isLoggedIn=this.auth.isLoggedIn();
+  }
+  getAllCategories()
+  {
+    this.productService.getCategories().subscribe((res:any)=>
+    {
+      this.categories=res;
+    });
+  }
+  setCategoryProduct(category:any)
+  {
+    this.categoryService.sendData(category);
     
   }
-  isSidenavClose():boolean
-  {
-    return this.sidenavService.close();
-  }
-  isSidenavOpen():boolean
-    {
-      return this.sidenavService.open();
-
-    }
   
 
-    menuClose()
-    {
-        this.sideNavClose=true
-        this.sideNavOpen=false
-        console.log(this.sideNavClose);
-        this.sidenavService.open();
-    }
-    
-    menuOpen(){
-      this.sideNavOpen=true
-      this.sideNavClose=false
-     this.sidenavService.close()
-    }
-
-    toggleMenu()
-    {
-      this.isMenuVisible=!this.isMenuVisible;
-    }
-
-    logout()
-    {
-      this.auth.logout();
-      this.isLoggedIn=this.auth.isLoggedIn();
-    }
   }
 
