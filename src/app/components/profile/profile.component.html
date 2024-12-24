@@ -1,0 +1,30 @@
+<mat-card class="content" *ngIf="isLoggedIn">
+    <mat-card-content>
+        <form (ngSubmit)="onUpdatePassword()" *ngIf="profile">
+            <table>
+                <th>Profile</th>
+                <tr>
+                    <td><label for="username">Username</label></td>
+                    <td><input type="text" name="username" [disabled]="true" value={{profile.username}}></td>
+                </tr>
+                <tr>
+                    <td> <label for="email">Email</label></td>
+                    <td><input type="text" name="email" [disabled]="true" value={{profile.email}}></td>
+                </tr>
+                <tr>
+                    <td><label for="password">Password</label></td>
+                    <td><input type="text" name="password" [disabled]="true" value={{profile.password}}></td>
+                </tr>
+                <tr>
+                    <td><label for="roles">Roles</label></td>
+                    <td>
+                        <ul>
+                        <li *ngFor="let role of profile.roles">{{role.roleName}}</li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>            
+            <button type="submit" mat-stroked-button>Change Password</button><br>
+        </form>
+    </mat-card-content>
+</mat-card>

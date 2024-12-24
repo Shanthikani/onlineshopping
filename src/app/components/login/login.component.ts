@@ -10,6 +10,7 @@ import { LoginInterface } from '../../interfaces/login.interface';
 import { Router } from '@angular/router';
 import { UserInterface } from '../../interfaces/user.interface';
 import { SidenavService } from '../../services/Sidenav.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -28,7 +29,7 @@ export class LoginComponent implements OnInit{
   errorMessage='';
 
 
-  constructor(private auth:AuthService,private router:Router,private sidenavService:SidenavService)
+  constructor(private auth:AuthService,private router:Router,private sidenavService:SidenavService,private snackbar:MatSnackBar)
   {
     sidenavService.close();
   }
@@ -75,11 +76,13 @@ export class LoginComponent implements OnInit{
         {
             this.isLoggedIn=false;
             this.isLoginFailed=true;
+            this.snackbar.open("Login Failed",'OK',{duration:20000,});
             this.errorMessage=error;
             console.log(error);
             
         }
       }
-    );   
+    ); 
+    
   }
 }

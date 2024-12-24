@@ -24,3 +24,11 @@ input{
 button{
     margin-left: 15px;
 }
+span{
+    margin-top: 15px;
+}
+::ng-deep .mat-mdc-simple-snack-bar
+{
+    background-color: black !important;
+    color:white;
+}

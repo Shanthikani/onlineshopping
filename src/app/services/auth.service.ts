@@ -35,8 +35,8 @@ getLoginUser(loginData:LoginInterface):Observable<UserInterface>
           {
               e.username=loginData.username;
               sessionStorage.setItem("username",e.username);
-              sessionStorage.setItem("token","Bearer"+e.token);
-              sessionStorage.setItem("roles",JSON.stringify(e.role));
+              sessionStorage.setItem("token","Bearer "+e.token);
+              sessionStorage.setItem("roles",JSON.stringify(e.roles));
               this.onLoginUpdate.next()
             return e;            
           } 

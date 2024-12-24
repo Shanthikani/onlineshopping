@@ -6,5 +6,6 @@ export const Constant = {
         CREATE_PRODUCT:'add',
         UPDATE_PRODUCT:'',
         DELETE_PRODUCT:''
+        
     }
 }

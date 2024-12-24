@@ -30,6 +30,7 @@ export class HeaderComponent {
   public isLoggedIn!:boolean;
   public category!:Category;
   public username:any;
+  public userRoles:any;
   
 
 
@@ -56,7 +57,23 @@ export class HeaderComponent {
     {
       this.isLoggedIn=this.auth.isLoggedIn();
       this.username="Welcome "+ sessionStorage.getItem("username")+"!";
-
+      const roles=sessionStorage.getItem("roles");
+      if(roles)
+      {
+        try{
+          this.userRoles=JSON.parse(roles);
+        }
+        catch(e)
+        {
+          console.log("Invalid JSON in session storage",e);
+          this.userRoles={};
+        }
+      }
+      else
+      {
+        this.userRoles={}
+      }
+     console.log(this.userRoles);
     });
   }
   toogleSideNav()
