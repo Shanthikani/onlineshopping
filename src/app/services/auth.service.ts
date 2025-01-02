@@ -37,6 +37,8 @@ getLoginUser(loginData:LoginInterface):Observable<UserInterface>
               sessionStorage.setItem("username",e.username);
               sessionStorage.setItem("token","Bearer "+e.token);
               sessionStorage.setItem("roles",JSON.stringify(e.roles));
+              console.log(sessionStorage.getItem("roles"));
+              
               this.onLoginUpdate.next()
             return e;            
           } 

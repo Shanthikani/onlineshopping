@@ -2,7 +2,7 @@ export interface Profile {
     username:string;
     password:string;
     email:string;
-    roles:Role[];
+    roles:string[];
 }
 export interface Role
 {
